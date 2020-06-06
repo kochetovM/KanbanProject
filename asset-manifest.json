@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/rusbur/KanbanProject.git/static/css/main.5430f7a4.chunk.css",
+    "main.js": "/rusbur/KanbanProject.git/static/js/main.f4f0f797.chunk.js",
+    "main.js.map": "/rusbur/KanbanProject.git/static/js/main.f4f0f797.chunk.js.map",
+    "runtime-main.js": "/rusbur/KanbanProject.git/static/js/runtime-main.08b1d0e9.js",
+    "runtime-main.js.map": "/rusbur/KanbanProject.git/static/js/runtime-main.08b1d0e9.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/rusbur/KanbanProject.git/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.e2d54959.chunk.js": "/rusbur/KanbanProject.git/static/js/2.e2d54959.chunk.js",
+    "static/js/2.e2d54959.chunk.js.map": "/rusbur/KanbanProject.git/static/js/2.e2d54959.chunk.js.map",
+    "index.html": "/rusbur/KanbanProject.git/index.html",
+    "precache-manifest.35545f18b4205c264ade8f71e8de4a72.js": "/rusbur/KanbanProject.git/precache-manifest.35545f18b4205c264ade8f71e8de4a72.js",
+    "service-worker.js": "/rusbur/KanbanProject.git/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/rusbur/KanbanProject.git/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.5430f7a4.chunk.css.map": "/rusbur/KanbanProject.git/static/css/main.5430f7a4.chunk.css.map",
+    "static/js/2.e2d54959.chunk.js.LICENSE.txt": "/rusbur/KanbanProject.git/static/js/2.e2d54959.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.08b1d0e9.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.e2d54959.chunk.js",
+    "static/css/main.5430f7a4.chunk.css",
+    "static/js/main.f4f0f797.chunk.js"
+  ]
+}
