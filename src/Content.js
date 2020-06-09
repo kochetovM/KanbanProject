@@ -150,7 +150,7 @@ function Content(props) {
   }
 
   return (
-      <div className="container-fluid">
+      <div className="Board">
 
         <div className="row">
             <h2>Kanban</h2>
@@ -162,9 +162,9 @@ function Content(props) {
         <div className="row">
           <div className="col-sm-3">
               <h4> Todo </h4>
-              <div>
-                  <button className="btn btn-primary" onClick={() => sort_bypriority(dolist,setDolist )  }>
-                      Sort by priority </button>
+              <div className="">
+                  <button type="button" className="btn btn-sm btn-outline-info "  onClick={() => sort_bypriority(dolist,setDolist )  }>
+                      Sort.. </button>
               </div>
               <div>
                 { dolist.map((el,i) => <Board
@@ -185,8 +185,8 @@ function Content(props) {
           <div className="col-sm-3">
               <h4>In progress</h4>
               <div>
-                  <button className="btn btn-primary" onClick={() => sort_bypriority(progress,setProgress )  }>
-                      Sort by priority </button>
+                  <button type="button" className="btn btn-sm btn-outline-info "onClick={() => sort_bypriority(progress,setProgress )  }>
+                      Sort.. </button>
               </div>
               <div>
                 { progress.map((el,i) => <Board
@@ -207,8 +207,8 @@ function Content(props) {
             <div className="col-sm-3">
                 <h4> Review</h4>
                   <div>
-                      <button className="btn btn-primary" onClick={() => sort_bypriority(review,setReview )  }>
-                              Sort by priority </button>
+                      <button type="button" className="btn btn-sm btn-outline-info " onClick={() => sort_bypriority(review,setReview )  }>
+                              Sort.. </button>
                   </div>
                   <div>
                     { review.map((el,i) => <Board  el={el} index={i}
@@ -228,8 +228,8 @@ function Content(props) {
             <div className="col-sm-3">
                 <h4> Done </h4>
                 <div>
-                  <button className="btn btn-primary" onClick={() => sort_bypriority(done,setDone )  }>
-                        Sort by priority </button>
+                  <button type="button" className="btn btn-sm btn-outline-info " onClick={() => sort_bypriority(done,setDone )  }>
+                        Sort.. </button>
                 </div>
 
                 <div>

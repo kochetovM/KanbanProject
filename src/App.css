@@ -10,6 +10,7 @@
 .Cardstyle{
   margin-top: 20px;
 }
+
 .show>.dropdown-menu {
   display: block;
   position: absolute;
@@ -17,6 +18,13 @@
 .Content li{
   /*font-size:22px;*/
   margin-top: 17px;
+}
+
+.Board {
+  /*font-size:22px;*/
+  margin-top: 15px;
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .Createtask{
