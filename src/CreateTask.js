@@ -46,7 +46,8 @@ function CreateTask(props) {
     };
 
     return (
-        <div className="">
+        <div>
+            <div className="">
 
             {!isOpenCreateTaskForm &&
             <button className="btn btn-primary" onClick={openCreateTaskForm}>Create
@@ -74,7 +75,7 @@ function CreateTask(props) {
                 </button>
             </form>
             }
-
+            </div>
          </div>
 
     );

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './App.css';
 import Board from "./Board";
 import CreateTask from "./CreateTask";
 
@@ -22,7 +21,7 @@ function Content(props) {
       name: 'Create F3',
       priority: 25
     }
-  ]
+  ];
   const progress_start = [
     {
       id: 15,
@@ -34,7 +33,7 @@ function Content(props) {
       name: 'Create F5',
       priority: 20
     }
-  ]
+  ];
   const review_start = [
     {
       id: 17,
@@ -46,7 +45,7 @@ function Content(props) {
       name: 'Create F7',
       priority: 9
     }
-  ]
+  ];
   const done_start = [
     {
       id: 19,
@@ -59,6 +58,7 @@ function Content(props) {
   const  [progress, setProgress] = useState(progress_start);
   const  [review, setReview] = useState(review_start);
   const  [done, setDone] = useState(done_start);
+  //const  [columnsnames,setNames] = useState(startlistcolumns);
 
   const addnewtask = (newtask) => {
     console.log("newtaskid",newtask);
@@ -103,42 +103,31 @@ function Content(props) {
     console.log(id);
     setList( currentlist.filter( el => (el.id!==id) ));
   };
+  const setList_byname = (name,copylist) => {
 
-  const move_right = (id,currentlist,rightlist, setList, setRightList) => {
-    console.log(id);
-    let templist = [];
-    let temp_el = null;
+    if (name=='dolist') {setDolist(copylist)};
+    if (name=='progress') {setProgress(copylist)};
+    if (name=='review') {setReview(copylist)};
+    if (name=='done') {setDone(copylist)};
 
-    currentlist.forEach( el => {
-          if (el.id===id) { temp_el= el; }
-          else { templist.push(el) };
-    })
+  }
+  const move_to = (name,index,currentlist,setList) => {
+    console.log(name);
+    const colums= {
+      'dolist': dolist,
+      'progress': progress,
+      'review': review,
+      "done": done
+    };
 
-    setList(templist); //Удаляем задание из тек списка
+    const copylist=[...currentlist];
+    const copy_el = copylist[index];
+    delete_post(currentlist[index].id, currentlist, setList );//Удаляем задание из тек списка
 
-    templist=[...rightlist];
-    templist.push(temp_el);
-
-    setRightList( templist )  //Вставляем элемент в другой список
-  };
-
-  const move_left = (id,currentlist,leftlist, setList,setLeftList) => {
-    console.log(id);
-    let templist = [];
-    let temp_el = null;
-
-    currentlist.forEach( el => {
-      if (el.id===id) { temp_el= el; }
-      else { templist.push(el) };
-    })
-
-    setList(templist); //Удаляем задание из тек списка
-
-    templist=[...leftlist];
-    templist.push(temp_el);
-
-    setLeftList( templist ) //Вставляем элемент в другой список
-  };
+    const copylist2=[...colums[name]];
+    copylist2.push(copy_el);
+    setList_byname(name,copylist2);
+  }
 
   const sort_bypriority = (currentlist, setList ) => {
     let listcopy = [...currentlist];
@@ -161,99 +150,104 @@ function Content(props) {
   }
 
   return (
-      <div className="content">
+      <div className="container-fluid">
 
-          <h1>Kanban</h1>
-          <h1>-------------------------</h1>
+        <div className="row">
+            <h2>Kanban</h2>
+        </div>
+        <div className="row Createtask">
+            <CreateTask addnewtask={addnewtask} />
+        </div>
 
-          <CreateTask addnewtask={addnewtask} />
-
-          <h1>-------------------------</h1>
-
-          <div className="row">
-            <div className="col">
-              To do ---
-              <button className="btn btn-primary" onClick={() => sort_bypriority(dolist,setDolist )  }>
-                  Sort by priority </button>
-              <ul>
-                { dolist.map(el => <Board  el={el}
+        <div className="row">
+          <div className="col-sm-3">
+              <h4> Todo </h4>
+              <div>
+                  <button className="btn btn-primary" onClick={() => sort_bypriority(dolist,setDolist )  }>
+                      Sort by priority </button>
+              </div>
+              <div>
+                { dolist.map((el,i) => <Board
+                                           el={el} index={i}
                                            currentlist={dolist}
-                                           rightlist={progress}
-                                           leftlist={null}
                                            setList={setDolist}
-                                           setRightList={setProgress}
+                                           column_name={"dolist"}
 
                                            delete_post={delete_post}
                                            move_up={move_up}
                                            move_down={move_down}
-                                           move_right={move_right}
-                                           move_left={false} />) }
-              </ul>
+                                           move_to={move_to}
+                                           />)
+                }
+              </div>
+          </div>
+
+          <div className="col-sm-3">
+              <h4>In progress</h4>
+              <div>
+                  <button className="btn btn-primary" onClick={() => sort_bypriority(progress,setProgress )  }>
+                      Sort by priority </button>
+              </div>
+              <div>
+                { progress.map((el,i) => <Board
+                                                 el={el} index={i}
+                                                 currentlist={progress}
+                                                 setList={setProgress}
+                                                 column_name={"progress"}
+
+                                                 delete_post={delete_post}
+                                                 move_up={move_up}
+                                                 move_down={move_down}
+                                                 move_to={move_to}
+                                                  />)
+                }
+              </div>
+          </div>
+
+            <div className="col-sm-3">
+                <h4> Review</h4>
+                  <div>
+                      <button className="btn btn-primary" onClick={() => sort_bypriority(review,setReview )  }>
+                              Sort by priority </button>
+                  </div>
+                  <div>
+                    { review.map((el,i) => <Board  el={el} index={i}
+                                                   currentlist={review}
+                                                   setList={setReview}
+                                                   column_name={"review"}
+
+                                                   delete_post={delete_post}
+                                                   move_up={move_up}
+                                                   move_down={move_down}
+                                                   move_to={move_to} />)
+                    }
+                  </div>
+
             </div>
 
-            <div className="col">
-              In progress---
-              <button className="btn btn-primary" onClick={() => sort_bypriority(progress,setProgress )  }>
-                  Sort by priority </button>
-              <ul>
-                { progress.map(el => <Board  el={el}
-                                             currentlist={progress}
-                                             rightlist={review}
-                                             leftlist={dolist}
-                                             setList={setProgress}
-                                             setLeftList={setDolist}
-                                             setRightList={setReview}
+            <div className="col-sm-3">
+                <h4> Done </h4>
+                <div>
+                  <button className="btn btn-primary" onClick={() => sort_bypriority(done,setDone )  }>
+                        Sort by priority </button>
+                </div>
+
+                <div>
+                { done.map((el,i) => <Board  el={el} index={i}
+                                             currentlist={done}
+                                             setList={setDone}
+                                             column_name={"done"}
 
                                              delete_post={delete_post}
                                              move_up={move_up}
                                              move_down={move_down}
-                                             move_right={move_right}
-                                             move_left={move_left}  />) }
-              </ul>
+                                             move_to={move_to} />)
+                }
+              </div>
+
             </div>
 
-            <div className="col">
-              Review---
-              <button className="btn btn-primary" onClick={() => sort_bypriority(review,setReview )  }>
-                      Sort by priority </button>
-              <ul>
-                { review.map(el => <Board  el={el}
-                                           currentlist={review}
-                                           rightlist={done}
-                                           leftlist={progress}
-                                           setList={setReview}
-                                           setLeftList={setProgress}
-                                           setRightList={setDone}
-
-                                           delete_post={delete_post}
-                                           move_up={move_up}
-                                           move_down={move_down}
-                                           move_right={move_right}
-                                           move_left={move_left}  />) }
-              </ul>
-            </div>
-
-            <div className="col">
-              Done---
-              <button className="btn btn-primary" onClick={() => sort_bypriority(done,setDone )  }>
-                      Sort by priority </button>
-              <ul>
-                { done.map(el => <Board  el={el}
-                                         currentlist={done}
-                                         rightlist={null}
-                                         leftlist={review}
-                                         setList={setDone}
-                                         setLeftList={setReview}
-
-                                         delete_post={delete_post}
-                                         move_up={move_up}
-                                         move_down={move_down}
-                                         move_right={false}
-                                         move_left={move_left}  />) }
-              </ul>
-            </div>
-
-          </div>
+        </div>
 
       </div>
 

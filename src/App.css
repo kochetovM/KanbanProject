@@ -1,15 +1,28 @@
+
 .App {
   text-align: center;
 }
 .Content{
-  margin-top: 30px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
-
+.Cardstyle{
+  margin-top: 20px;
+}
+.show>.dropdown-menu {
+  display: block;
+  position: absolute;
+}
 .Content li{
   /*font-size:22px;*/
   margin-top: 17px;
+}
+
+.Createtask{
+  margin-top: 20px;
+  margin-down: 20px;
+  padding-bottom: 30px;
 }
 
 .App-logo {
