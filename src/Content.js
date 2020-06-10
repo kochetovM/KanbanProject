@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Board from "./Board";
+import TaskCard from "./TaskCard";
 import CreateTask from "./CreateTask";
 
 function Content(props) {
@@ -58,17 +58,13 @@ function Content(props) {
   const  [progress, setProgress] = useState(progress_start);
   const  [review, setReview] = useState(review_start);
   const  [done, setDone] = useState(done_start);
-  //const  [columnsnames,setNames] = useState(startlistcolumns);
 
-  const addnewtask = (newtask) => {
-    console.log("newtaskid",newtask);
-
-    setDolist(dolist => [...dolist,newtask]);
-
-    console.log("WholeList",dolist);
+  const addnewtask = (newtask,currentlist,setList ) => {
+    setList(currentlist => [newtask,...currentlist]);
+    //console.log("WholeList",dolist);
   }
   const move_up = (id,currentlist,setList) => {
-    console.log(id);
+    //console.log(id);
     let post=null;
     let index=0;
 
@@ -84,7 +80,6 @@ function Content(props) {
   };
 
   const move_down = (id,currentlist,setList ) => {
-    console.log(id);
     let post=null;
     let index=0;
 
@@ -100,7 +95,7 @@ function Content(props) {
   };
 
   const delete_post = (id,currentlist,setList ) => {
-    console.log(id);
+    //console.log(id);
     setList( currentlist.filter( el => (el.id!==id) ));
   };
   const setList_byname = (name,copylist) => {
@@ -112,7 +107,6 @@ function Content(props) {
 
   }
   const move_to = (name,index,currentlist,setList) => {
-    console.log(name);
     const colums= {
       'dolist': dolist,
       'progress': progress,
@@ -127,6 +121,10 @@ function Content(props) {
     const copylist2=[...colums[name]];
     copylist2.push(copy_el);
     setList_byname(name,copylist2);
+  }
+
+  const save_updated_list = (updated_list,setList) => {
+      setList(updated_list);
   }
 
   const sort_bypriority = (currentlist, setList ) => {
@@ -155,25 +153,26 @@ function Content(props) {
         <div className="row">
             <h2>Kanban</h2>
         </div>
-        <div className="row Createtask">
-            <CreateTask addnewtask={addnewtask} />
-        </div>
 
         <div className="row">
-          <div className="col-sm-3">
+          <div className="col columnstyle">
               <h4> Todo </h4>
+
               <div className="">
-                  <button type="button" className="btn btn-sm btn-outline-info "  onClick={() => sort_bypriority(dolist,setDolist )  }>
+                  <CreateTask addnewtask={addnewtask} />
+                  <button type="button" className="stepahead btn btn-sm btn-outline-info "  onClick={() => sort_bypriority(dolist,setDolist )  }>
                       Sort.. </button>
               </div>
+
               <div>
-                { dolist.map((el,i) => <Board
+                { dolist.map((el,i) => <TaskCard
                                            el={el} index={i}
                                            currentlist={dolist}
                                            setList={setDolist}
                                            column_name={"dolist"}
 
                                            delete_post={delete_post}
+                                           save_updated_list={save_updated_list}
                                            move_up={move_up}
                                            move_down={move_down}
                                            move_to={move_to}
@@ -182,20 +181,21 @@ function Content(props) {
               </div>
           </div>
 
-          <div className="col-sm-3">
+          <div className="col columnstyle" >
               <h4>In progress</h4>
               <div>
                   <button type="button" className="btn btn-sm btn-outline-info "onClick={() => sort_bypriority(progress,setProgress )  }>
                       Sort.. </button>
               </div>
               <div>
-                { progress.map((el,i) => <Board
+                { progress.map((el,i) => <TaskCard
                                                  el={el} index={i}
                                                  currentlist={progress}
                                                  setList={setProgress}
                                                  column_name={"progress"}
 
                                                  delete_post={delete_post}
+                                                 save_updated_list={save_updated_list}
                                                  move_up={move_up}
                                                  move_down={move_down}
                                                  move_to={move_to}
@@ -204,19 +204,20 @@ function Content(props) {
               </div>
           </div>
 
-            <div className="col-sm-3">
+            <div className="col columnstyle">
                 <h4> Review</h4>
                   <div>
                       <button type="button" className="btn btn-sm btn-outline-info " onClick={() => sort_bypriority(review,setReview )  }>
                               Sort.. </button>
                   </div>
                   <div>
-                    { review.map((el,i) => <Board  el={el} index={i}
+                    { review.map((el,i) => <TaskCard  el={el} index={i}
                                                    currentlist={review}
                                                    setList={setReview}
                                                    column_name={"review"}
 
                                                    delete_post={delete_post}
+                                                   save_updated_list={save_updated_list}
                                                    move_up={move_up}
                                                    move_down={move_down}
                                                    move_to={move_to} />)
@@ -225,7 +226,7 @@ function Content(props) {
 
             </div>
 
-            <div className="col-sm-3">
+            <div className="col columnstyle">
                 <h4> Done </h4>
                 <div>
                   <button type="button" className="btn btn-sm btn-outline-info " onClick={() => sort_bypriority(done,setDone )  }>
@@ -233,12 +234,13 @@ function Content(props) {
                 </div>
 
                 <div>
-                { done.map((el,i) => <Board  el={el} index={i}
+                { done.map((el,i) => <TaskCard  el={el} index={i}
                                              currentlist={done}
                                              setList={setDone}
                                              column_name={"done"}
 
                                              delete_post={delete_post}
+                                             save_updated_list={save_updated_list}
                                              move_up={move_up}
                                              move_down={move_down}
                                              move_to={move_to} />)

@@ -35,23 +35,20 @@ function CreateTask(props) {
         console.log(taskInput);
         console.log(priorityInput);
         const new_task= {
-            id: math.random(),
+            id: math.floor( math.random()*10000),
             name: taskInput,
             priority: parseInt(priorityInput)
         }
-
+        console.log(new_task.id);
         props.addnewtask(new_task); // Adding new task to our toDo list
 
         taskReset();
     };
 
     return (
-        <div>
-            <div className="">
-
+        <>
             {!isOpenCreateTaskForm &&
-            <button className="btn btn-primary" onClick={openCreateTaskForm}>Create
-                Task</button>}
+            <button className="btn btn-sm btn-outline-info " onClick={openCreateTaskForm}>New</button>}
 
             {isOpenCreateTaskForm &&
             <form>
@@ -75,8 +72,7 @@ function CreateTask(props) {
                 </button>
             </form>
             }
-            </div>
-         </div>
+        </>
 
     );
 }

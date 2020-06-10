@@ -11,6 +11,15 @@
   margin-top: 20px;
 }
 
+.columnstyle {
+  border-radius: 15px;
+  margin-right: 8px;
+  margin-left: 8px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: oldlace ;
+}
+
 .show>.dropdown-menu {
   display: block;
   position: absolute;
@@ -19,11 +28,20 @@
   /*font-size:22px;*/
   margin-top: 17px;
 }
+.buttons_group{
+  margin-bottom: 6px;
+}
+.buttons_group .spanstyle{
+  margin-right: 10px;
+}
 
 .Board {
   /*font-size:22px;*/
   margin-top: 15px;
   margin-right: 12px;
+  margin-left: 12px;
+}
+.stepahead{
   margin-left: 12px;
 }
 
