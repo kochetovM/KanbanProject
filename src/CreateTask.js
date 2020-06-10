@@ -32,15 +32,15 @@ function CreateTask(props) {
 
     const taskSubmit = (e) => {
         e.preventDefault();
-        console.log(taskInput);
-        console.log(priorityInput);
+        //console.log(taskInput);
+        //console.log(priorityInput);
         const new_task= {
             id: math.floor( math.random()*10000),
             name: taskInput,
             priority: parseInt(priorityInput)
         }
-        console.log(new_task.id);
-        props.addnewtask(new_task); // Adding new task to our toDo list
+
+        props.addnewtask(new_task,props.currentlist,props.setList); // Adding new task to our toDo list
 
         taskReset();
     };
@@ -51,7 +51,7 @@ function CreateTask(props) {
             <button className="btn btn-sm btn-outline-info " onClick={openCreateTaskForm}>New</button>}
 
             {isOpenCreateTaskForm &&
-            <form>
+            <form className="addnewitem_style">
                 <div className="form-group">
                     <input type="text" className="form-control"
                            placeholder={"Enter a new task..."}

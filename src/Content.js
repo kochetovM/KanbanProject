@@ -106,14 +106,21 @@ function Content(props) {
     if (name=='done') {setDone(copylist)};
 
   }
+
+    const ColumnsName_Header = [
+        "TO DO",
+        "IN PROGRESS",
+        "REVIEW",
+        "DONE"
+    ];
+
   const move_to = (name,index,currentlist,setList) => {
-    const colums= {
+  const colums= {
       'dolist': dolist,
       'progress': progress,
       'review': review,
       "done": done
-    };
-
+  };
     const copylist=[...currentlist];
     const copy_el = copylist[index];
     delete_post(currentlist[index].id, currentlist, setList );//Удаляем задание из тек списка
@@ -158,8 +165,8 @@ function Content(props) {
           <div className="col columnstyle">
               <h4> Todo </h4>
 
-              <div className="">
-                  <CreateTask addnewtask={addnewtask} />
+              <div className="columnheader">
+                  <CreateTask addnewtask={addnewtask} currentlist={dolist} setList={setDolist} />
                   <button type="button" className="stepahead btn btn-sm btn-outline-info "  onClick={() => sort_bypriority(dolist,setDolist )  }>
                       Sort.. </button>
               </div>
@@ -183,8 +190,9 @@ function Content(props) {
 
           <div className="col columnstyle" >
               <h4>In progress</h4>
-              <div>
-                  <button type="button" className="btn btn-sm btn-outline-info "onClick={() => sort_bypriority(progress,setProgress )  }>
+              <div className="columnheader">
+                  <CreateTask addnewtask={addnewtask} currentlist={progress} setList={setProgress} />
+                  <button type="button" className="stepahead btn btn-sm btn-outline-info "  onClick={() => sort_bypriority(progress,setProgress )  }>
                       Sort.. </button>
               </div>
               <div>
@@ -206,10 +214,13 @@ function Content(props) {
 
             <div className="col columnstyle">
                 <h4> Review</h4>
-                  <div>
-                      <button type="button" className="btn btn-sm btn-outline-info " onClick={() => sort_bypriority(review,setReview )  }>
-                              Sort.. </button>
-                  </div>
+
+                    <div className="columnheader">
+                        <CreateTask addnewtask={addnewtask} currentlist={review} setList={setReview} />
+                        <button type="button" className="stepahead btn btn-sm btn-outline-info "  onClick={() => sort_bypriority(review,setReview )  }>
+                            Sort.. </button>
+                    </div>
+
                   <div>
                     { review.map((el,i) => <TaskCard  el={el} index={i}
                                                    currentlist={review}
@@ -228,8 +239,10 @@ function Content(props) {
 
             <div className="col columnstyle">
                 <h4> Done </h4>
-                <div>
-                  <button type="button" className="btn btn-sm btn-outline-info " onClick={() => sort_bypriority(done,setDone )  }>
+
+                <div className="columnheader">
+                    <CreateTask addnewtask={addnewtask} currentlist={done} setList={setDone} />
+                    <button type="button" className="stepahead btn btn-sm btn-outline-info "  onClick={() => sort_bypriority(done,setDone )  }>
                         Sort.. </button>
                 </div>
 

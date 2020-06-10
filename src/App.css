@@ -44,7 +44,13 @@
 .stepahead{
   margin-left: 12px;
 }
+.addnewitem_style {
+  margin-bottom: 15px;
+}
 
+.columnheader {
+  margin-top: 15px;
+}
 .Createtask{
   margin-top: 20px;
   margin-down: 20px;
