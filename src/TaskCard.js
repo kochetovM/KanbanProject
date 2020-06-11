@@ -77,7 +77,7 @@ function TaskCard(props) {
 
               {/*Далее происходит меню на выбор перехода в колонку */}
               <div className="">
-                    <ShowcolumnNames  column_name={props.column_name} index={props.index} move_to={props.move_to}  setList={props.setList} currentlist={props.currentlist} />
+                    <ShowcolumnNames current_column_name={props.current_column_name} columns_names={Object.keys(props.ColumnsNames_and_Headers)}  index={props.index} move_to={props.move_to}  setList={props.setList} currentlist={props.currentlist} />
               </div>
 
           </div>
