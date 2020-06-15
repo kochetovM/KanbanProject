@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### `Preview weblink`
+https://rusbur.github.io/KanbanProject/
+
 
 ## Available Scripts
 
