@@ -67,8 +67,8 @@ function TaskCard(props) {
                   <span className="spanstyle btn-outline-info " onClick={() => props.move_up(props.el.id, props.currentlist,props.setList )  } >
                       {icon_up} </span>
 
-                  <sapn className="spanstyle btn-outline-info" onClick={() => props.move_down(props.el.id, props.currentlist, props.setList )} >
-                       {icon_down}  </sapn>
+                  <span className="spanstyle btn-outline-info" onClick={() => props.move_down(props.el.id, props.currentlist, props.setList )} >
+                       {icon_down}  </span>
 
                   <span className="spanstyle btn-outline-info" data-toggle="modal" data-target={"#"+props.el.id}>
                         {icon_trash} </span>

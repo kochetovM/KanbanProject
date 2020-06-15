@@ -45,9 +45,8 @@ function Board(props) {
     let post=null;
     let index=0;
 
-    currentlist.map( (el,i) => {
-      if(el.id===id) {  post=el; index=i; }
-    })
+    currentlist.map( (el,i) => { if(el.id===id) {  post=el; index=i; }})
+
     if (index===currentlist.length-1) return;
 
     let listcopy = [...currentlist];
