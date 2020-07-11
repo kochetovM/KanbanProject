@@ -18,6 +18,16 @@ const todo_start = [
         id: 13,
         name: 'Create App2',
         priority: 25
+    },
+    {
+        id: 21,
+        name: 'Create Module 1',
+        priority: 28
+    },
+    {
+        id: 22,
+        name: 'Create Module2',
+        priority: 35
     }
 ];
 const progress_start = [
@@ -49,6 +59,7 @@ const review_start = [
         priority: 25
     }
 ];
+
 const done_start = [
     {
         id: 19,
