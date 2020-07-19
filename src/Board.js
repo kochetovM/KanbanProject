@@ -96,6 +96,10 @@ function Board(props) {
     setList(sortedlist);
   }
 
+  const func2 = () =>{
+
+  }
+
   const build_column = (column_name,current_column_list,column_Setfunc) => (
     <Column
         ColumnsNames_and_Headers = {ColumnsNames_and_Headers}
