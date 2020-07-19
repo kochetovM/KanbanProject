@@ -56,7 +56,7 @@ function EditItemModal(props) {
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">
                             Close</button>
                         <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={() => onClickSaveChanges()} >
-                            Save</button>
+                            Save</button> {/*Save changes*/}
                     </div>
 
                 </div>

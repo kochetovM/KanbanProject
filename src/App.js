@@ -28,6 +28,11 @@ const todo_start = [
         id: 22,
         name: 'Create Module2',
         priority: 35
+    },
+    {
+        id: 23,
+        name: 'Create Note',
+        priority: 54
     }
 ];
 const progress_start = [
