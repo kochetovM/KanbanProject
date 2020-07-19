@@ -112,6 +112,7 @@ function Board(props) {
         move_to={move_to}
     />
   )
+    {/*Whole Task Board*/}
 
   return (
       <div className="Board">
