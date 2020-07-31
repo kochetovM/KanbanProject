@@ -13,6 +13,7 @@ function EditItemModal(props) {
         if (!isnum) { setPriority(currentPriority) }
         else { setPriority(e.target.value); }
     };
+    // <- when calling change priority in check it if it is a number
 
     const onClickSaveChanges = () => {
         //Сохраняем изменения
